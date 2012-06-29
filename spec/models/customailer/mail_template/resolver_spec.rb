@@ -2,6 +2,8 @@ require 'spec_helper'
 
 module Customailer
   describe MailTemplate::Resolver do
+    subject { MailTemplate::Resolver.instance }
+
     it "returns the template with the saved body" do
       details = {formats: [:html], locale: [:en], handlers: [:erb] }
 

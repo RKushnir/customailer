@@ -3,6 +3,10 @@ require 'spec_helper'
 describe Customailer do
   let (:email) { UserMailer.simple_message }
 
+  after do
+    Customailer::MailTemplate::Resolver.instance.clear_cache
+  end
+
   context "when there's a template in the database" do
     before do
       Customailer::MailTemplate.create!(

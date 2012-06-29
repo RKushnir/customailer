@@ -2,7 +2,17 @@ module Customailer
   class MailTemplate < ActiveRecord::Base
     attr_accessible :body, :format, :handler, :locale, :partial, :path
 
+    after_save :clear_resolver_cache
+    after_destroy :clear_resolver_cache
+
+    def clear_resolver_cache
+      Resolver.instance.clear_cache
+    end
+
     class Resolver < ActionView::Resolver
+      require "singleton"
+      include Singleton
+
       protected
 
       def find_templates(name, prefix, partial, details)
