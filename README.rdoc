@@ -1,0 +1,5 @@
+= Customailer
+
+This project rocks and uses MIT-LICENSE.
+
+Used code from http://pragprog.com/book/jvrails/crafting-rails-applications
