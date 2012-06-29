@@ -1,18 +1,21 @@
 require 'spec_helper'
 
 describe Customailer do
-  it "provides mailer templates from database" do
-    Customailer::MailTemplate.create!(body: "Hello, Dear User", path: 'user_mailer/simple_message')
+  let (:email) { UserMailer.simple_message }
 
-    Customailer::MailTemplate.create!(
-      body: "Hello, Dear User",
-      path: "user_mailer/simple_message",
-      format: "html",
-      locale: "en",
-      handler: "erb",
-      partial: false)
+  context "when there's a template in the database" do
+    before do
+      Customailer::MailTemplate.create!(
+        body: "Hello, Dear User",
+        path: "user_mailer/simple_message",
+        format: "html",
+        locale: "en",
+        handler: "erb",
+        partial: false)
+    end
 
-    email = UserMailer.simple_message
-    email.body.encoded.should match("Hello, Dear User")
+    it "fetches template from the database" do
+      email.body.encoded.should match("Hello, Dear User")
+    end
   end
 end
