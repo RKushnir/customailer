@@ -22,4 +22,10 @@ describe Customailer do
       email.body.encoded.should match("Hello, Dear User")
     end
   end
+
+  context "when there's no template in the database" do
+    it "uses the template from the filesystem" do
+      email.body.encoded.should match("Template from the file")
+    end
+  end
 end
