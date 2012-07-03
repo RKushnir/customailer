@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Customailer::VERSION
   s.authors     = ["Roman Kushnir"]
   s.email       = ["broilerster@gmail.com"]
-  s.homepage    = "TODO"
+  s.homepage    = "https://github.com/RKushnir/customailer"
   s.summary     = "Customize email templates."
   s.description = "Customailer allows to override and edit mailer templates directly on the site without touching the application view files."
 
