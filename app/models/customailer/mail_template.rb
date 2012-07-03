@@ -1,5 +1,12 @@
 module Customailer
   class MailTemplate < ActiveRecord::Base
+    validates :body, :path, presence: true
+
+    validates :format, inclusion: Mime::SET.symbols.map(&:to_s)
+    validates :locale, inclusion: I18n.available_locales.map(&:to_s)
+    validates :handler, inclusion:
+      ActionView::Template::Handlers.extensions.map(&:to_s)
+
     attr_accessible :body, :format, :handler, :locale, :partial, :path
 
     after_save :clear_resolver_cache
