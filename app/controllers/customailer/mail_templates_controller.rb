@@ -1,5 +1,3 @@
-require_dependency "customailer/application_controller"
-
 module Customailer
   class MailTemplatesController < ApplicationController
     # GET /mail_templates
