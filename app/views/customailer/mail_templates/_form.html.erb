@@ -1,0 +1,29 @@
+<%= form_for(@mail_template) do |f| %>
+  <% if @mail_template.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mail_template.errors.count, "error") %> prohibited this mail template from being saved:</h2>
+
+      <ul>
+      <% @mail_template.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="field">
+    <%= f.label :path %><br />
+    <%= f.text_field :path %>
+  </div>
+  <div class="field">
+    <%= f.label :locale %><br />
+    <%= f.select :locale, I18n.available_locales %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

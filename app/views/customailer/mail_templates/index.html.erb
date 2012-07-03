@@ -1,0 +1,25 @@
+<h1>Listing Mail Templates</h1>
+
+<table>
+  <tr>
+    <th>Path</th>
+    <th>Locale</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mail_templates.each do |mail_template| %>
+  <tr>
+    <td><%= mail_template.path %></td>
+    <td><%= mail_template.locale %></td>
+    <td><%= link_to 'Show', mail_template %></td>
+    <td><%= link_to 'Edit', [:edit, mail_template] %></td>
+    <td><%= link_to 'Destroy', mail_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mail Template', :new_mail_template %>
