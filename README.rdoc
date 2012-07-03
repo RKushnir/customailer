@@ -1,5 +1,7 @@
 = Customailer
 
-This project rocks and uses MIT-LICENSE.
+== Credits
+Thanks to José Valim for his great book {Crafting Rails Applications}[http://pragprog.com/book/jvrails/crafting-rails-applications] and to Roy van der Meij for the code for {Liquid template handler}[http://www.royvandermeij.com/blog/2011/09/21/create-a-liquid-handler-for-rails-3-dot-1/].
 
-Used code from http://pragprog.com/book/jvrails/crafting-rails-applications
+== License
+This project rocks and uses MIT-LICENSE.
