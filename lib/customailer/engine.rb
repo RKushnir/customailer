@@ -12,5 +12,12 @@ module Customailer
         prepend_view_path Customailer::MailTemplate::Resolver.instance
       end
     end
+
+    initializer "customailer.register_liquid_handler" do |app|
+      ActiveSupport.on_load(:action_view) do
+        require 'customailer/handlers/liquid'
+        ActionView::Template.register_template_handler :liquid, Customailer::Handlers::Liquid
+      end
+    end
   end
 end

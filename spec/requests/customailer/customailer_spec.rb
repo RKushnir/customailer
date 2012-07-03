@@ -28,4 +28,17 @@ describe Customailer do
       email.body.encoded.should match("Template from the file")
     end
   end
+
+  it "processes templates with Liquid handler" do
+    Customailer::MailTemplate.create!(
+        body: "Hello, {{ user_name }}",
+        path: "user_mailer/interpolated_message",
+        format: "html",
+        locale: "en",
+        handler: "liquid",
+        partial: false)
+
+    email = UserMailer.interpolated_message("Jimmy")
+    email.body.encoded.should match("Hello, Jimmy")
+  end
 end
