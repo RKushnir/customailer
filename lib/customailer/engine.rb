@@ -19,5 +19,12 @@ module Customailer
         ActionView::Template.register_template_handler :liquid, Customailer::Handlers::Liquid
       end
     end
+
+    initializer "customailer.extend_liquid_filters" do |app|
+      ActiveSupport.on_load(:action_view) do
+        require 'customailer/liquid_filters'
+        ::Liquid::Template.register_filter Customailer::LiquidFilters
+      end
+    end
   end
 end

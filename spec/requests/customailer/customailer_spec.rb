@@ -41,4 +41,16 @@ describe Customailer do
     email = UserMailer.interpolated_message("Jimmy")
     email.body.encoded.should match("Hello, Jimmy")
   end
+
+  it "adds custom liquid filters" do
+      Customailer::MailTemplate.create!(
+        body: "{{ 'Google' | link_to: 'google.com' }}",
+        path: "user_mailer/simple_message",
+        format: "html",
+        locale: "en",
+        handler: "liquid",
+        partial: false)
+
+      email.body.encoded.should match("<a href=\"google.com\">Google</a>")
+  end
 end
