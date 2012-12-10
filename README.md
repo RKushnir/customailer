@@ -1,4 +1,6 @@
 # Customailer
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/RKushnir/customailer)
+
 Let your mail templates to be edited on the fly.  
 *Rails 3 only.*
 
